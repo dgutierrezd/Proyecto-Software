@@ -6,6 +6,7 @@
         <script src="../utils/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+        <script src="../js/auth.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Revista Electrónica UAM</title>
@@ -37,16 +38,16 @@
         </nav>
         <div class="justify-content-center text-center mt-5">
             <div class="container col-md-6" style="margin: auto;">
-                <form method="post">
-                    <h2 class="text-center">Iniciar Sesión</h2>       
+                <h2>Iniciar Sesión</h2>
+                <div method="POST">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Username" required="required">
+                        <input type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Correo electrónico">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password" required="required">
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña">
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                        <button type="button" class="btn-block btn btn-primary" onclick="iniciarSesion()">Entrar</button>
                     </div>
                 </form>
                 <p class="text-center"><a href="./registrarse.html">Registrarse</a></p>

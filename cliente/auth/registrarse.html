@@ -6,6 +6,7 @@
         <script src="../utils/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+        <script src="../js/auth.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Revista Electrónica UAM</title>
@@ -37,32 +38,26 @@
         </nav>
         <div class="justify-content-center mt-5">
             <div class="container col-md-6" style="margin: auto;">
-                <form method="post">
+                <form id="registerForm" method="POST">
                     <h2 class="text-center">Registrarse</h2>       
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Nombre" required="required">
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre Completo" required="required">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Correo Electrónico" required="required">
+                        <input type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Correo Electrónico" required="required">
                     </div>
-                    <label for="inputCargo">Selecciona tu perfil</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="autor" id="exampleRadios1" value="autor">
-                        <label class="form-check-label" for="exampleRadios1">
-                            Autor
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="evaluador" id="exampleRadios2" value="evaluador">
-                        <label class="form-check-label" for="exampleRadios2">
-                            Evaluador
-                        </label>
+                    <div class="form-group">
+                        <label for="perfil">Escoge tu perfil</label>
+                        <select class="form-control" id="perfil" required>
+                            <option value="autor">Autor</option>
+                            <option value="evaluador">Evaluador</option>
+                        </select>
                     </div>
                     <div class="form-group mt-2">
-                        <input type="password" class="form-control" placeholder="Contraseña" required="required">
+                        <input type="password" class="form-control" id="contraseña" placeholder="Contraseña" required="required">
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+                        <button type="button" class="btn btn-primary btn-block" onclick="registrar()">Registrarse</button>
                     </div>
                 </form>
                 <p class="text-center"><a href="./iniciarSesion.html">Iniciar Sesión</a></p>
