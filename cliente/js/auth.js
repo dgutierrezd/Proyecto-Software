@@ -5,14 +5,13 @@ const registrar = () => {
     let pass = document.getElementById('contraseña').value;
 
     if(nombre == '' || correo == '' || pass == '') {
-        //alert('No has ingresado las credenciales completas.')
-
-        swal.fire({
-            title: 'Error!',
-            text: 'Llena todos los espacios',
-            type: 'error',
-            confirmButtonText: 'Cool'
-        })
+        mostrarMensaje('Debes llenar el formulario');
+        // swal.fire({
+        //     title: 'Error!',
+        //     text: 'Llena todos los espacios',
+        //     type: 'error',
+        //     confirmButtonText: 'Cool'
+        // })
     } else {
         let usuario = {
             nombre,
@@ -30,12 +29,13 @@ const iniciarSesion = () => {
     let pass = document.getElementById('password').value;
 
     if(correo == '' || pass == '') {
-        swal.fire({
-            title: 'Error!',
-            text: 'Llena todos los espacios',
-            type: 'error',
-            confirmButtonText: 'Cool'
-        })
+        mostrarMensaje('Debes llenar el formulario');
+        // swal.fire({
+        //     title: 'Error!',
+        //     text: 'Llena todos los espacios',
+        //     type: 'error',
+        //     confirmButtonText: 'Cool'
+        // })
     } else {
         let usuario = {
             correo,
@@ -43,4 +43,8 @@ const iniciarSesion = () => {
         }
         console.log(usuario);
     }
+}
+
+const mostrarMensaje = (mensaje) => {
+    $(`#mensaje`).html(`<div class="alert alert-danger" role="alert">${mensaje}</div>`)
 }
