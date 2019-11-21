@@ -6,16 +6,8 @@ const registrar = () => {
 
     if(nombre == '' || correo == '' || pass == '') {
         mostrarMensaje('Debes llenar el formulario');
-        // swal.fire({
-        //     title: 'Error!',
-        //     text: 'Llena todos los espacios',
-        //     type: 'error',
-        //     confirmButtonText: 'Cool'
-        // })
     } else {
-        console.log(nombre)
-    
-        $.post('../../server/controllers/UserController.php', {nombre, correo, perfil, password: pass}, (res, req) => {
+        $.post('../../server/controllers/UserController.php', {nombre, correo, perfil, password: pass, metodo:'registrar'}, (res, req, error) => {
             if(req == 'success') {
                 document.getElementById('registerForm').reset();
                 swal.fire({
@@ -34,12 +26,6 @@ const iniciarSesion = () => {
 
     if(correo == '' || pass == '') {
         mostrarMensaje('Debes llenar el formulario');
-        // swal.fire({
-        //     title: 'Error!',
-        //     text: 'Llena todos los espacios',
-        //     type: 'error',
-        //     confirmButtonText: 'Cool'
-        // })
     } else {
         let usuario = {
             correo,

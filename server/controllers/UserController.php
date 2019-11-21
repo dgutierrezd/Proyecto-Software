@@ -16,15 +16,17 @@
         }
 
         function registrar() {
-            if($this->nombre != null) {
+            if($this->nombre != null) { 
                 $conexion = new Conexion();
                 $usuario = new User($this->nombre, $this->correo, $this->perfil, $this->password);
-
+                
                 $usuario->registrar($conexion);
             }
         }
     } 
 
     $obj = new UserController($_REQUEST['nombre'],$_REQUEST['correo'],$_REQUEST['perfil'],$_REQUEST['password']);
-    $obj->registrar();
+    if($_REQUEST['metodo'] == 'registrar') {
+        $obj->registrar();
+    }
 ?>
