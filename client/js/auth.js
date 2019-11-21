@@ -13,14 +13,18 @@ const registrar = () => {
         //     confirmButtonText: 'Cool'
         // })
     } else {
-        let usuario = {
-            nombre,
-            correo,
-            perfil,
-            pass
-        }
+        console.log(nombre)
     
-        console.log(usuario)
+        $.post('../../server/controllers/UserController.php', {nombre, correo, perfil, password: pass}, (res, req) => {
+            if(req == 'success') {
+                document.getElementById('registerForm').reset();
+                swal.fire({
+                    title: 'Usuario registrado',
+                    text: 'Te has registrado exitosamente, por favor inicia sesion',
+                    type: 'success'
+                })
+            }
+        });
     }
 }
 
