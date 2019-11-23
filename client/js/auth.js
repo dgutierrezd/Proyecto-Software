@@ -27,11 +27,12 @@ const iniciarSesion = () => {
     if(correo == '' || pass == '') {
         mostrarMensaje('Debes llenar el formulario');
     } else {
-        let usuario = {
-            correo,
-            pass
-        }
-        console.log(usuario);
+        $.post('../../server/controllers/UserController.php', {nombre:'', correo, perfil:'', password: pass, metodo:'iniciarSesion'}, (res, req, error) => {
+            if(res) {
+                window.location.href="../autor/misArticulos.html";
+            } else 
+                mostrarMensaje('Credenciales no válidas');
+        });
     }
 }
 
