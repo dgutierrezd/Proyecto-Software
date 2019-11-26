@@ -21,7 +21,8 @@
         function iniciarSesion($connect) {
             $query = "select * from usuarios where correo='".$this->correo."' and password='".$this->password."'";
             $rs = pg_query($connect->getInfodb(), $query);
-            
+
+            // Se obtienen los datos que se obtuvieron al consultar la bd
             while ($row = pg_fetch_row($rs)) {
                 print_r($row[3]." ".$row[0]);
             }

@@ -2,11 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <script src="./utils/jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <script src="../utils/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-        <script src="./js/articulos.js"></script>
+        <script src="../js/editor.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Revista Electrónica UAM</title>
@@ -21,59 +21,53 @@
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="articulos.html">Artículos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="conocenos.html">Conócenos</a>
+                        <a class="nav-link" href="./verArticulos.html">Ver Articulos</a>
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
-                        <button class="btn btn-secondary my-2 my-sm-0 mr-2"><a href="./auth/iniciarSesion.html">Iniciar Sesión</a></button>
-                        <button class="btn btn-secondary my-2 my-sm-0"><a href="./auth/registrarse.html">Registrarse</a></button>
+                    <button type="button" class="btn btn-secondary my-2 my-sm-0 mr-2" onclick="cerrarSesion()">Cerrar Sesión</button>
                 </div>
             </div>
         </nav>
         <div class="justify-content-center mt-5">
             <h1 class="text-center">Articulos</h1>
             <div class="container col-8 mt-3" style="margin: auto;">
-                <form class="form-inline" style="float: right;">
-                    <input class="form-control  mb-3" type="text" placeholder="Filtrar por título" id="filtro" onkeyup="filtrar()">
-                </form>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Título Artículo</th>
                             <th scope="col">Autor</th>
+                            <th scope="col">Descripción</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="table">
+                    <tbody>
                         <tr>
                             <th scope="row">1</th>
                             <td>Mark</td>
                             <td>Otto</td>
+                            <td>In et consectetur sapien. Fusce a leo accumsan turpis iaculis accumsan. Ut tincidunt nulla ac diam tempor viverra. Ut nulla augue, facilisis posuere arcu quis, consectetur porta turpis.</td>
                             <td>
-                                <button type="button" class="btn btn-info"><a href="./articulos/articulo.pdf" target="_blank" style="color: white;">Leer</a></button>
+                                <button type="button" class="btn btn-info">Enviar a</button>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
                             <td>Jacob</td>
                             <td>Thornton</td>
+                            <td>In et consectetur sapien. Fusce a leo accumsan turpis iaculis accumsan. Ut tincidunt nulla ac diam tempor viverra. Ut nulla augue, facilisis posuere arcu quis, consectetur porta turpis.</td>
                             <td>
-                                <button type="button" class="btn btn-info"><a href="./articulos/articulo.pdf" target="_blank" style="color: white;">Leer</a></button>
+                                <button type="button" class="btn btn-info">Enviar a</button>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
                             <td>Larry</td>
                             <td>the Bird</td>
+                            <td>In et consectetur sapien. Fusce a leo accumsan turpis iaculis accumsan. Ut tincidunt nulla ac diam tempor viverra. Ut nulla augue, facilisis posuere arcu quis, consectetur porta turpis.</td>
                             <td>
-                                <button type="button" class="btn btn-info"><a href="./articulos/articulo.pdf" target="_blank" style="color: white;">Leer</a></button>
+                                <button type="button" class="btn btn-info">Enviar a</button>
                             </td>
                         </tr>
                     </tbody>

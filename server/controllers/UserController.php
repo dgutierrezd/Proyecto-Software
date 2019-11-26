@@ -34,7 +34,9 @@
         }
     } 
 
+    // Crear un controlador para obtener los datos enviados desde el front
     $obj = new UserController($_REQUEST['nombre'],$_REQUEST['correo'],$_REQUEST['perfil'],$_REQUEST['password']);
+    // dependiendo del metodo enviado desde el front se determina que funcion realizar
     switch ($_REQUEST['metodo']) {
         case 'registrar':
             $obj->registrar();
