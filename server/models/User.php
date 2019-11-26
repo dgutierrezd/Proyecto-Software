@@ -23,7 +23,7 @@
             $rs = pg_query($connect->getInfodb(), $query);
             
             while ($row = pg_fetch_row($rs)) {
-                print_r($row);
+                print_r($row[3]." ".$row[0]);
             }
         }
     }

@@ -28,8 +28,23 @@ const iniciarSesion = () => {
         mostrarMensaje('Debes llenar el formulario');
     } else {
         $.post('../../server/controllers/UserController.php', {nombre:'', correo, perfil:'', password: pass, metodo:'iniciarSesion'}, (res, req, error) => {
+            res = res.split(" ");
+    
             if(res) {
-                window.location.href="../autor/misArticulos.html";
+                switch (res[0]) {
+                    case 'autor':
+                        localStorage.setItem('id', res[1])
+                        window.location.href="../autor/misArticulos.html";    
+                        break;
+                    case 'evaluador':
+                        localStorage.setItem('id', res[1])
+                        window.location.href="../evaluador/verArticulos.html";
+                        break;
+                
+                    default:
+                        mostrarMensaje('No se conoce el usuario');        
+                        break;
+                }
             } else 
                 mostrarMensaje('Credenciales no válidas');
         });
