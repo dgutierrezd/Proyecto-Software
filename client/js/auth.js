@@ -42,7 +42,7 @@ const iniciarSesion = () => {
                         break;
                 
                     default:
-                        mostrarMensaje('No se conoce el usuario');        
+                        mostrarMensaje('Credenciales no válidas');
                         break;
                 }
             } else 
