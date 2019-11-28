@@ -32,6 +32,15 @@
                 $usuario->iniciarSesion($conexion);
             }
         }
+
+        function getEvaluators() {
+            if($this->perfil != null) { 
+                $conexion = new Conexion();
+                $usuario = new User($this->nombre, $this->correo, $this->perfil, $this->password);
+                
+                $usuario->getEvaluators($conexion);
+            }
+        }
     } 
 
     // Crear un controlador para obtener los datos enviados desde el front
@@ -40,10 +49,13 @@
     switch ($_REQUEST['metodo']) {
         case 'registrar':
             $obj->registrar();
-            break;
+        break;
         case 'iniciarSesion':
             $obj->iniciarSesion();
-            break;
+        break;
+        case 'getEvaluators':
+            $obj->getEvaluators();
+        break;
         default:
             print_r('hay un error');
             break;

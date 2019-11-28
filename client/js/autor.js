@@ -4,43 +4,31 @@ const cerrarSesion = () => {
     window.location.href="../index.html"; 
 }
 
-const verificarInformacion = () =>
-{
-    var nombre = document.getElementById('titulo').value;
-    var descripcion = document.getElementById('descripcion').value;
+const enviarArticulo = () => {
+    let titulo = document.getElementById('titulo').value;
+    let descripcion = document.getElementById('descripcion').value;
+    let autorId = localStorage.getItem('id');
+    let estado = 'enviado';
 
-    if(nombre == '' | descripcion == '')
-    {
+    if(titulo == '' | descripcion == '') {
         mostrarMensaje('Debes llenar todos los campos.');
-    }
-    else
-    {
-        let archivo = document.getElementById('file');
-        console.log(archivo);     
+    } else {
+        // enviar los datos del usuario al servidor
+        $.post('../../server/controllers/ArticleController.php', {id:0 ,titulo, descripcion, autorId, estado, evaluadorId:0, metodo:'agregarArticulo'}, (res, req, error) => {
+            console.log(res)
+            if(req == 'success') {
+                // se vacia el formulario.
+                document.getElementById('articleForm').reset();
+                swal.fire({
+                    title: 'Articulo enviado',
+                    text: 'El articulo enviado satisfactoriamente, espera a que lo evaluen.',
+                    type: 'success'
+                })
+            }
+        });
     }
 }
-
-function readURL( e ) {
-           
-    if ( this.files && this.files[0] ) {
-       
-        var reader = new FileReader();           
-        reader.onload = ( function( e ) {
-            $( 'img#previewWindow' ).attr( 'src' , e.target.result );
-        });           
-        reader.readAsDataURL( this.files[0] );
-       
-        myFile = this.files[0];      // store file in global variable
-       
-  }
-   
-}       
 
 const mostrarMensaje = (mensaje) => {
     $(`#mensaje`).html(`<div class="alert alert-danger" role="alert">${mensaje}</div>`)
-}
-
-const enviarArticulo = () =>
-{
-
 }

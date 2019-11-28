@@ -27,6 +27,16 @@
                 print_r($row[3]." ".$row[0]);
             }
         }
+
+        function getEvaluators($connect) {
+            $query = "select * from usuarios where perfil='".$this->perfil."'";
+            $rs = pg_query($connect->getInfodb(), $query);
+
+            // Se obtienen los datos que se obtuvieron al consultar la bd
+            while ($row = pg_fetch_array($rs)) {
+                echo $row['id']."->".$row['nombre']."->".$row['correo']."*";
+            }
+        }
     }
 
 ?>
