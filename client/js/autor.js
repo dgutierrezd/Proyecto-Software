@@ -29,6 +29,40 @@ const enviarArticulo = () => {
     }
 }
 
+window.onload = () => {
+    let autorId = localStorage.getItem('id');
+    $.post('../../server/controllers/ArticleController.php', {id:0, titulo:'', descripcion:'', autorId, estado:'enviado', evaluadorId:0, metodo:'getArticlesAutor'}, (res, req, error) => {
+        res = res.split('*');
+        res.pop();
+
+        var table = `<table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Título Artículo</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+        
+        for(let item in res) {
+            item = res[item].split('->');
+
+            table += `<tr>
+                        <th scope="row">${item[0]}</th>
+                        <td>${item[1]}</td>
+                        <td>${item[2]}</td>
+                        <td>${item[3]}</td>
+                    </tr>`
+        }
+
+        table += `</tbody>
+                </table>`;
+        document.getElementById('articlesTable').innerHTML = table;
+    })
+}
+
 const mostrarMensaje = (mensaje) => {
     $(`#mensaje`).html(`<div class="alert alert-danger" role="alert">${mensaje}</div>`)
 }

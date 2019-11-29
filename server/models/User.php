@@ -29,7 +29,7 @@
         }
 
         function getEvaluators($connect) {
-            $query = "select * from usuarios where perfil='".$this->perfil."'";
+            $query = "select * from usuarios where perfil='".$this->perfil."' and id!='0'";
             $rs = pg_query($connect->getInfodb(), $query);
 
             // Se obtienen los datos que se obtuvieron al consultar la bd

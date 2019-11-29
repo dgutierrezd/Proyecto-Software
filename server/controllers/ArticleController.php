@@ -45,6 +45,49 @@
                 $articulo->setEvaluador($conexion);
             }
         }
+
+        function getArticlesEvaluate() {
+            if($this->evaluadorId != null) { 
+                $conexion = new Conexion();
+                $articulo = new Article($this->id, $this->titulo, $this->descripcion, $this->autorId, $this->estado, $this->evaluadorId);
+                
+                $articulo->getArticlesEvaluate($conexion);
+            }
+        }
+
+        function getNombreAutor() {
+            if($this->autorId != null) { 
+                $conexion = new Conexion();
+                $articulo = new Article($this->id, $this->titulo, $this->descripcion, $this->autorId, $this->estado, $this->evaluadorId);
+                
+                $articulo->getNombreAutor($conexion);
+            }
+        }
+
+        function evaluarArticulo() {
+            if($this->id != null) { 
+                $conexion = new Conexion();
+                $articulo = new Article($this->id, $this->titulo, $this->descripcion, $this->autorId, $this->estado, $this->evaluadorId);
+                
+                $articulo->evaluarArticulo($conexion);
+            }
+        }
+
+        function getArticlesAutor() {
+            if($this->autorId != null) { 
+                $conexion = new Conexion();
+                $articulo = new Article($this->id, $this->titulo, $this->descripcion, $this->autorId, $this->estado, $this->evaluadorId);
+                
+                $articulo->getArticlesAutor($conexion);
+            }
+        }
+
+        function getArticles() {
+            $conexion = new Conexion();
+            $articulo = new Article($this->id, $this->titulo, $this->descripcion, $this->autorId, $this->estado, $this->evaluadorId);
+            
+            $articulo->getArticles($conexion);
+        }
     } 
 
     // Crear un controlador para obtener los datos enviados desde el front
@@ -59,6 +102,24 @@
         break;
         case 'setEvaluador':
             $obj->setEvaluador();
+        break;
+        case 'getNombreAutor':
+            $obj->getNombreAutor();
+        break;
+        case 'getArticlesEvaluate':
+            $obj->getArticlesEvaluate();
+        break;
+        case 'aprobarArticulo':
+            $obj->evaluarArticulo();
+        break;
+        case 'rechazarArticulo':
+            $obj->evaluarArticulo();
+        break;
+        case 'getArticlesAutor':
+            $obj->getArticlesAutor();
+        break;
+        case 'getArticles':
+            $obj->getArticles();
         break;
         default:
             print_r('hay un error');

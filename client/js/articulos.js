@@ -12,3 +12,38 @@ const filtrar = () => {
             tr[i].style.display = 'none';
     }
 }
+
+window.onload = () => {
+    $.post('../server/controllers/ArticleController.php', {id:0, titulo:'', descripcion:'', autorId:0, estado:'aprobado', evaluadorId:0, metodo:'getArticles'}, (res, req, error) => {
+        res = res.split('*');
+        res.pop();
+
+        var table = `<table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Título Artículo</th>
+                                <th scope="col">Autor</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table">`;
+        
+        for(let item in res) {
+            item = res[item].split('->');
+            console.log(item)
+            table += `<tr>
+                        <th scope="row">${item[0]}</th>
+                        <td>${item[1]}</td>
+                        <td>${item[2]}</td>
+                        <td>
+                            <button type="button" class="btn btn-info"><a href="./articulos/articulo.pdf" target="_blank" style="color: white;">Leer</a></button>
+                        </td>
+                    </tr>`
+        }
+
+        table += `</tbody>
+                </table>`;
+        document.getElementById('articlesTable').innerHTML = table;
+    })
+}
