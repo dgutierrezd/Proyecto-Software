@@ -24,12 +24,13 @@
         }
 
         function getArticlesAdmin($connect) {
-            $query = "select * from articulos where estado='".$this->estado."' and evaluadorid='0' ";
+            $query = "select articulos.id, titulo, nombre, descripcion from articulos, usuarios where estado='".$this->estado."' and evaluadorid='0' and usuarios.id=articulos.autorid ";
             $rs = pg_query($connect->getInfodb(), $query);
 
             // Se obtienen los datos que se obtuvieron al consultar la bd
             while ($row = pg_fetch_array($rs)) {
-                echo $row['id']."->".$row['titulo']."->".$row['descripcion']."->".$row['autorid']."*";
+                echo $row['id']."->".$row['titulo']."->".$row['descripcion']."->".$row['nombre']."*";
+                
             }
         }
 
@@ -39,12 +40,12 @@
         }
 
         function getArticlesEvaluate($connect) {
-            $query = "select * from articulos where evaluadorid='".$this->evaluadorId."' and estado='enviado'";
+            $query = "select articulos.id, titulo, nombre, descripcion from articulos, usuarios where evaluadorid='".$this->evaluadorId."' and usuarios.id=articulos.autorid and estado='enviado'";
             $rs = pg_query($connect->getInfodb(), $query);
 
             // Se obtienen los datos que se obtuvieron al consultar la bd
             while ($row = pg_fetch_array($rs)) {
-                echo $row['id']."->".$row['titulo']."->".$row['descripcion']."->".$row['autorid']."*";
+                echo $row['id']."->".$row['titulo']."->".$row['descripcion']."->".$row['nombre']."*";
             }
         }
 
@@ -73,12 +74,12 @@
         }
 
         function getArticles($connect) {
-            $query = "select * from articulos where estado='".$this->estado."'";
+            $query = "select articulos.id, titulo, nombre from articulos, usuarios where usuarios.id=articulos.autorid and estado='".$this->estado."'";
             $rs = pg_query($connect->getInfodb(), $query);
 
             // Se obtienen los datos que se obtuvieron al consultar la bd
             while ($row = pg_fetch_array($rs)) {
-                echo $row['id']."->".$row['titulo']."->".$row['autorid']."*";
+                echo $row['id']."->".$row['titulo']."->".$row['nombre']."*";
             }
         }
     }

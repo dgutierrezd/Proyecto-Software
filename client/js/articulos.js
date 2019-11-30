@@ -31,7 +31,7 @@ window.onload = () => {
         
         for(let item in res) {
             item = res[item].split('->');
-            console.log(item)
+            
             table += `<tr>
                         <th scope="row">${item[0]}</th>
                         <td>${item[1]}</td>

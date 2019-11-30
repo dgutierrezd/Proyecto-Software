@@ -4,12 +4,6 @@ const cerrarSesion = () => {
     window.location.href="../index.html"; 
 }
 
-const getNombreAutor = id => {
-    $.post('../../server/controllers/ArticleController.php', {id:0, titulo:'', descripcion:'', autorId:id, estado:'enviado', evaluadorId:0, metodo:'getNombreAutor'}, (res, req, error) => {
-        return res;
-    })
-}
-
 window.onload = () => {
     let evaluadorId = localStorage.getItem('id');
     $.post('../../server/controllers/ArticleController.php', {id:0, titulo:'', descripcion:'', autorId:'', estado:'enviado', evaluadorId, metodo:'getArticlesEvaluate'}, (res, req, error) => {
@@ -30,7 +24,7 @@ window.onload = () => {
         
         for(let item in res) {
             item = res[item].split('->');
-            console.log(getNombreAutor(item[3]));
+            
             table += `<tr>
                         <th scope="row">${item[0]}</th>
                         <td>${item[1]}</td>
