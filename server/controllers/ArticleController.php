@@ -103,9 +103,6 @@
         case 'setEvaluador':
             $obj->setEvaluador();
         break;
-        case 'getNombreAutor':
-            $obj->getNombreAutor();
-        break;
         case 'getArticlesEvaluate':
             $obj->getArticlesEvaluate();
         break;

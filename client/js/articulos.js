@@ -37,7 +37,7 @@ window.onload = () => {
                         <td>${item[1]}</td>
                         <td>${item[2]}</td>
                         <td>
-                            <button type="button" class="btn btn-info"><a href="./articulos/articulo.pdf" target="_blank" style="color: white;">Leer</a></button>
+                            <button type="button" class="btn btn-info"><a href="./articulos/${item[0]}.pdf" target="_blank" style="color: white;">Leer</a></button>
                         </td>
                     </tr>`
         }

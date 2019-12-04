@@ -6,6 +6,9 @@ const cerrarSesion = () => {
 
 window.onload = () => {
     $.post('../../server/controllers/ArticleController.php', {id:0, titulo:'', descripcion:'', autorId:'', estado:'enviado', evaluadorId:'', metodo:'getArticlesAdmin'}, (res, req, error) => {
+        if(!res) {
+            $('.noArticulos').html('<h1>No tienes artículos por evaluar</h1>')
+        }
         res = res.split('*');
         res.pop();
 
@@ -23,7 +26,7 @@ window.onload = () => {
         
         for(let item in res) {
             item = res[item].split('->');
-            
+
             table += `<tr>
                         <th scope="row">${item[0]}</th>
                         <td>${item[1]}</td>

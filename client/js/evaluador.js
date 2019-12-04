@@ -7,6 +7,9 @@ const cerrarSesion = () => {
 window.onload = () => {
     let evaluadorId = localStorage.getItem('id');
     $.post('../../server/controllers/ArticleController.php', {id:0, titulo:'', descripcion:'', autorId:'', estado:'enviado', evaluadorId, metodo:'getArticlesEvaluate'}, (res, req, error) => {
+        if(!res) {
+            $('.noArticulos').html('<h1>No tienes artículos por evaluar</h1>')
+        }
         res = res.split('*');
         res.pop();
 
@@ -31,7 +34,7 @@ window.onload = () => {
                         <td>${item[3]}</td>
                         <td>${item[2]}</td>
                         <td>
-                            <button type="button" class="btn btn-info btn-block mb-2"><a href="../articulos/articulo.pdf" target="_blank" style="color: white;">Leer</a></button><div style="float: right;">
+                            <button type="button" class="btn btn-info btn-block mb-2"><a href="../articulos/${item[0]}.pdf" target="_blank" style="color: white;">Leer</a></button><div style="float: right;">
                             <button type="button" class="btn btn-success btn-block" onclick="aprobarArticulo(${item[0]})">Aprobar</button>
                             <button type="button" class="btn btn-danger btn-block" onclick="rechazarArticulo(${item[0]})">Rechazar</button>
                         </td>
